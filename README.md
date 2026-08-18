@@ -2,11 +2,11 @@
 
 ## 📰 Project Description
 
-This is a capstone machine learning project focused on using **Random Forest** for fraud detection.  
-It covers core skills such as **data analysis**, **time-series feature engineering**, and building robust **scikit-learn pipelines**.  
-The final model achieved an **F1-Score of 0.98** and **100% precision**.  
+This is a capstone machine learning project focused on detecting fraudulent financial transactions using **Random Forest**.
 
-Additionally, a **Power BI dashboard** was created to visualize key insights from the dataset, helping to better understand fraud patterns, transaction behavior, and feature impact.
+The project was initially developed using a smaller dataset during my Data Science course and was later extended to the complete **6.36 million-row synthetic transaction dataset** for final model development and evaluation.
+
+A **Power BI dashboard** was also created to visualize fraud patterns, transaction behavior, and key financial insights.
 
 ---
 
@@ -20,80 +20,104 @@ LinkedIn: [Vimal Raj R](https://www.linkedin.com/in/vimalraj73/)
 
 ## 💡 Project Context
 
-This project introduces fundamental concepts in **data science**, **feature engineering**, and **building data-leakage-proof models** using pipelines.  
-It emphasizes key skills such as handling **imbalanced datasets**, creating **predictive features**, and **robust model evaluation**.  
-The Power BI report complements the machine learning analysis with **interactive visual exploration** of fraud trends.
+This project demonstrates practical applications of **data preprocessing, feature engineering, machine learning, and business intelligence**.
+
+The project focuses on handling an imbalanced fraud dataset, building a preprocessing pipeline using **ColumnTransformer**, evaluating multiple feature configurations, and analyzing the factors contributing to fraud predictions.
 
 ---
 
 ## 🎯 Project Overview & Goal
 
-This project applies machine learning to predict **fraudulent financial transactions**.  
-The main goal is to classify each transaction as either:
+The objective is to classify financial transactions as:
 
-- **1 → Fraudulent**  
+- **1 → Fraudulent**
 - **0 → Legitimate**
 
-The model achieved an **F1-Score of ~0.98** and **100% Precision**, proving that the engineered features were highly effective at identifying fraud with **zero false positives** (no legitimate users were blocked).
+The final model was developed using the complete **6,362,620 transaction dataset** and evaluated using metrics such as **Precision, Recall, F1-Score, ROC-AUC, and PR-AUC**.
 
 ---
 
 ## 🛠️ Tools & Libraries
 
-The following tools and Python libraries were used (as listed in `requirements.txt`):
-
 ### 🧰 Python Stack
-- **Pandas:** Data handling, cleaning, and feature engineering  
-- **NumPy:** Numerical computations  
-- **Scikit-learn:** RandomForestClassifier, Pipeline, ColumnTransformer, evaluation metrics  
-- **Imbalanced-learn:** ImbPipeline wrapper for pipeline compatibility  
-- **Matplotlib & Seaborn:** Data visualization (Confusion Matrix, ROC Curve)
+
+- **Pandas:** Data cleaning and feature engineering
+- **NumPy:** Numerical computations
+- **Scikit-learn:** Preprocessing, Random Forest, and model evaluation
+- **Imbalanced-learn:** Machine learning pipeline
+- **Matplotlib & Seaborn:** Data visualization
 
 ### 📊 BI & Visualization
-- **Power BI:** For interactive dashboard creation and fraud pattern analysis  
+
+- **Power BI:** Interactive fraud and transaction analysis
 
 ---
 
 ## 📝 Project Methodology
 
 ### 1. Data Preparation
-The project used **`Fraud_Analysis_Dataset.csv`**, a pre-sampled dataset with a 1:10 imbalanced ratio  
-(**1,142 fraud cases vs. 10,000 non-fraud cases**).
+
+The project uses a **6.36 million-row synthetic financial transaction dataset**.
+
+Data preparation included:
+
+- Data type and missing-value analysis
+- Class imbalance analysis
+- Removal of irrelevant identifier columns
+- Stratified train-test splitting
 
 ### 2. Feature Engineering
-Generated powerful, context-aware predictors, including:
 
-- **hour_of_day:** Captures time-based transaction patterns  
-- **ErrorBalanceOrg** & **ErrorBalanceDest:** “Smoking gun” features that check the math of transactions — an error of **exactly 0** was found to be highly predictive of fraud
+Created transaction-based features including:
+
+- **Hour_of_Day**
+- **Day_of_Week**
+- **ErrorBalanceOrg**
+- **ErrorBalanceDest**
+
+These features were created to capture transaction timing and inconsistencies between transaction amounts and account balances.
 
 ### 3. Modeling Pipeline
-A **Pipeline** with a **ColumnTransformer** was implemented to automate preprocessing and prevent data leakage.
 
-Preprocessing steps included:
-- **OneHotEncoder** for the `type` column  
-- **StandardScaler** for numerical features  
+A **ColumnTransformer** was used for preprocessing:
 
-**Model Used:**  
-- **RandomForestClassifier**, chosen for its high accuracy and robustness against imbalanced data.
+- **StandardScaler** for numerical features
+- **OneHotEncoder** for transaction type
+
+The preprocessing steps and **RandomForestClassifier** were combined into a single pipeline.
+
+### 4. Model Evaluation
+
+Different feature configurations were evaluated to investigate the contribution of engineered and post-transaction features.
+
+Model performance was evaluated using:
+
+- Accuracy
+- Precision
+- Recall
+- F1-Score
+- ROC-AUC
+- Precision-Recall AUC
+- Confusion Matrix
 
 ---
 
-## 📊 Results and Reflection
+## 📊 Results
 
-The model was evaluated on a 20% test split and showed excellent, generalizable performance.
+### Final Model Performance
 
-| Metric | Test Score |
+> **Update these values with the final results from the 6.36M-row model.**
+
+| Metric | Score |
 | :--- | :--- |
-| **F1-Score (Fraud)** | 0.98 |
-| **Recall (Fraud)** | 0.96 |
-| **Precision (Fraud)** | 1.00 |
-| **AUC-ROC** | 0.99 |
+| **Accuracy** | 100.00% |
+| **Precision (Fraud)** | 100.00% |
+| **Recall (Fraud)** | 100.00% |
+| **F1-Score (Fraud)** | 100.00% |
+| **AUC-ROC** | 0.9991 |
+| **PR-AUC** | 0.9985 
 
-### Reflection
-The final **F1-score of ~0.98** and **perfect precision** confirm that the **feature engineering**, particularly the `ErrorBalanceOrg` feature, was highly effective in detecting fraud.  
-This demonstrates the impact of **domain-specific feature creation** over complex resampling techniques, with strong results even on **imbalanced data**.  
-
-The accompanying **Power BI dashboard** visually showcases key fraud patterns, helping non-technical users explore and interpret the data easily.
+Because fraud transactions represent a small portion of the dataset, **Precision, Recall, F1-Score, ROC-AUC, and PR-AUC** were emphasized rather than accuracy alone.
 
 ---
 
@@ -115,4 +139,12 @@ The accompanying **Power BI dashboard** visually showcases key fraud patterns, h
 
 ---
 
-✨ *A practical beginner-to-intermediate project combining data science and business intelligence to uncover and visualize fraud detection patterns in financial transactions.*
+## ⚠️ Dataset Limitation
+
+The dataset is **synthetic/simulated** and therefore the model results should not be interpreted as production-level banking fraud performance.
+
+---
+
+## ✨ Key Learning
+
+This project provided hands-on experience with **large-scale data analysis, feature engineering, imbalanced classification, preprocessing pipelines, model evaluation, and Power BI dashboard development**.
