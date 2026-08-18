@@ -26,6 +26,16 @@ The project focuses on handling an imbalanced fraud dataset, building a preproce
 
 ---
 
+## 📊 Dataset
+
+The project uses the **PaySim synthetic financial transaction dataset**, containing **6,362,620 transactions**.
+
+The dataset is not included in this repository due to its large file size.
+
+🔗 **Dataset:** [Fraudulent Transactions Dataset on Kaggle](https://www.kaggle.com/datasets/amanalisiddiqui/fraud-detection-dataset)
+
+---
+
 ## 🎯 Project Overview & Goal
 
 The objective is to classify financial transactions as:
